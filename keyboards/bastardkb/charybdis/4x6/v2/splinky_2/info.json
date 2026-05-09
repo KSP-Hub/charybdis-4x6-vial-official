@@ -4,17 +4,17 @@
   "url": "https://bastardkb.com",
   "maintainer": "KSP-Hub",
   "diode_direction": "COL2ROW",
-  "split": {
-    "enabled": true,
-    "transport": {
-      "protocol": "serial"
-    }
-  },
   "features": {
     "bootmagic": true,
     "mousekey": true,
     "extrakey": true,
     "pointing_device": true
+  },
+  "split": {
+    "enabled": true,
+    "transport": {
+      "protocol": "serial"
+    }
   },
   "layouts": {
     "LAYOUT": {
