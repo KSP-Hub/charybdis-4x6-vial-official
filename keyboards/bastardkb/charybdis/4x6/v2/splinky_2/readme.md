@@ -1,5 +1,14 @@
-# Splinky controller
+# Charybdis 4x6 v2 (Splinky 2) Vial Keymap
 
-The splinky is a Pro-Micro/Elite-C replacement with USB-C and RP2040.
+Конфигурация прошивки Vial для Charybdis 4x6 v2 на контроллере Splinky 2 (RP2040).
 
-See [plut0nium/0xB2](https://github.com/plut0nium/0xB2/#releases) to figure out the right version for you (v2 or v3).
+## Особенности
+- Полная поддержка Vial с динамическими слоями
+- Трекбол PMW3360 на правой половине (MASTER_RIGHT)
+- Split-соединение через UART (GP1)
+- Эмуляция EEPROM через RP2040 Flash Wear Leveling
+- Double-tap reset для входа в bootloader
+
+## Сборка
+```bash
+qmk compile -kb bastardkb/charybdis/4x6/v2/splinky_2 -km vial
