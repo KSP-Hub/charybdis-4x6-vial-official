@@ -1,24 +1,35 @@
 #pragma once
-
-// Vial Security & UID
 #define VIAL_KEYBOARD_UID {0x04, 0x03, 0x02, 0x01, 0x69, 0x42, 0xEF, 0xBE}
 #define VIAL_UNLOCK_COMBO_ROWS { 0, 1 }
 #define VIAL_UNLOCK_COMBO_COLS { 0, 1 }
 
-// Split & Master
 #define MASTER_RIGHT
 #define POINTING_DEVICE_RIGHT
 #define POINTING_DEVICE_ROTATION_90
 
-// Serial Transport (RP2040 Split)
-#define SOFT_SERIAL_PIN GP1
-#define SERIAL_USE_MULTI_TRANSACTION
-
-// PMW3360 Trackball
+// PMW3360 Trackball Configuration
 #define POINTING_DEVICE_DRIVER pmw3360
 #define PMW3360_CS_PIN GP14
+#define POINTING_DEVICE_CS_PIN GP14
 #define PMW3360_DPI 1600
 
-// EEPROM (RP2040 Flash Wear Leveling)
+// SPI Configuration for PMW3360
+#define SPI_DRIVER SPID0
+#define SPI_SCK_PIN GP18
+#define SPI_MISO_PIN GP20
+#define SPI_MOSI_PIN GP19
+
+// Split Serial Configuration (RP2040)
+#define SERIAL_USART_TX_PIN GP1
+#define SERIAL_USART_DRIVER SD1
+#define SERIAL_USART_FULL_DUPLEX
+
+// EEPROM & Wear Leveling
 #define EEPROM_DRIVER vendor
+#define WEAR_LEVELING_ENABLE
+#define WEAR_LEVELING_RP2040_FLASH
 #define RP2040_FLASH_WEAR_LEVELING_SIZE 16384
+
+// Bootloader
+#define RP2040_BOOTLOADER_DOUBLE_TAP_RESET
+#define RP2040_BOOTLOADER_DOUBLE_TAP_RESET_LED GP17
