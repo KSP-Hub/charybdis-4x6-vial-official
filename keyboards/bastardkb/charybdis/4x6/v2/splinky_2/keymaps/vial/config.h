@@ -7,12 +7,13 @@
 
 // Split & Handedness
 #define MASTER_RIGHT
-// #define SPLIT_HAND_PIN GP13 // Раскомментируйте, если используете пин для определения половин
+// #define SPLIT_HAND_PIN GP13
 
 // Pointing Device (PMW3360)
 #define POINTING_DEVICE_RIGHT
 #define POINTING_DEVICE_ROTATION_90
-#define PMW3360_CS_PIN GP14  // Критическое исправление ошибки компиляции
+#define POINTING_DEVICE_CS_PIN GP14  // Критическое исправление ошибки компиляции
+#define PMW3360_CS_PIN GP14          // Дублируем для совместимости с драйвером QMK
 #define PMW3360_DPI 1600
 
 // RP2040 Specifics
