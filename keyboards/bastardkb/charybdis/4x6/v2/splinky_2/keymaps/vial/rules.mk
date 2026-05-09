@@ -1,27 +1,27 @@
-# MCU & Bootloader (обязательно для RP2040 в этой версии QMK)
-MCU = RP2040
-BOOTLOADER = rp2040
-
-# Vial & VIA
+# Core Features
 VIA_ENABLE = yes
 VIAL_ENABLE = yes
 VIAL_INSECURE = yes
-VIALRGB_ENABLE = no
-QMK_SETTINGS = yes
+QMK_SETTINGS = no
 
-# Features
-COMBO_ENABLE = yes
-ONE_SHOT_ENABLE = yes
-MOUSE_ENABLE = yes
+# Hardware & Drivers
+BOOTLOADER = rp2040
+SERIAL_DRIVER = vendor
+EEPROM_DRIVER = vendor
 SPLIT_KEYBOARD = yes
 
 # Pointing Device
 POINTING_DEVICE_ENABLE = yes
 POINTING_DEVICE_DRIVER = pmw3360
+MOUSE_ENABLE = yes
 
-# Lighting (отключено для экономии места)
+# RGB (Disabled to save flash & avoid driver schema errors)
 RGB_MATRIX_ENABLE = no
 RGBLIGHT_ENABLE = no
+VIALRGB_ENABLE = no
 
-# EEPROM
-EEPROM_DRIVER = vendor
+# Space Saving
+COMBO_ENABLE = no
+KEY_OVERRIDE_ENABLE = no
+SPACE_CADET_ENABLE = no
+TAP_DANCE_ENABLE = no
