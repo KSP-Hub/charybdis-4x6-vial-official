@@ -1,3 +1,5 @@
+BOARD = GENERIC_PROMICRO_RP2040
+
 VIA_ENABLE = yes
 VIAL_ENABLE = yes
 VIAL_INSECURE = yes
@@ -12,7 +14,4 @@ POINTING_DEVICE_DRIVER = pmw3360
 SPLIT_KEYBOARD = yes
 MOUSE_ENABLE = yes
 EEPROM_DRIVER = vendor
-BOOTLOADER = rp2040
-
-# FIX: Явно указываем драйвер, чтобы пройти валидацию QMK (даже при отключенном RGB)
-RGB_MATRIX_DRIVER = ws2812
+SERIAL_DRIVER = vendor
