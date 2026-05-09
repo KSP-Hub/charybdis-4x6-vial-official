@@ -34,3 +34,45 @@ QMK is developed and maintained by Jack Humbert of OLKB with contributions from 
 ## Official Website
 
 [qmk.fm](https://qmk.fm) is the official website of QMK, where you can find links to this page, the documentation, and the keyboards supported by QMK.
+
+## The structure of the main files for compiling the firmware (doing)
+```makrdown
+charybdis-4x6-vial-official/
+├── keyboards/
+│   └── bastardkb/
+│       └── charybdis/
+│           └── 4x6/
+│               ├── v2/
+│                   └── splinky_2/
+│                       ├── config.h
+│                       ├── info.json
+│                       ├── mcuconf.h              
+│                       ├── readme.md
+│                       ├── rules.mk
+│                       └── keymaps/
+│                           └── vial/
+│                               ├── keymap.c
+│                               ├── rules.mk
+│                               └── config.h
+│               ├── keymaps/
+│                       ├── default/
+│                               ├── config.h
+│                               ├── keymap.c
+│                               └── readme.md
+│                       ├── via/
+│                               ├── config.h
+│                               ├── keymap.c
+│                               ├── readme.md
+│                               └── rules.mk
+│                       ├── vial/
+│                               ├── config.h
+│                               ├── keymap.c
+│                               ├── readme.md
+│                               ├── rules.mk
+│                               └── vial.json
+│               └── ...
+└── .github/
+    └── workflows/
+        ├── build_vial_clean.yml
+        └── ...
+```
