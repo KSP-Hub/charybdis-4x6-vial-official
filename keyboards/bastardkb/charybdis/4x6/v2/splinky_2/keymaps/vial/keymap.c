@@ -1,33 +1,30 @@
-{
-  "keyboard_name": "Charybdis 4x6 v2 (Splinky 2)",
-  "manufacturer": "Bastard Keyboards",
-  "url": "https://bastardkb.com",
-  "maintainer": "KSP-Hub",
-  "diode_direction": "COL2ROW",
-  "split": {
-    "enabled": true,
-    "transport": "serial"
-  },
-  "features": {
-    "bootmagic": true,
-    "mousekey": true,
-    "extrakey": true,
-    "pointing_device": true
-  },
-  "layouts": {
-    "LAYOUT": {
-      "layout": [
-        {"x":0, "y":0, "matrix":[0,0]}, {"x":1, "y":0, "matrix":[0,1]}, {"x":2, "y":0, "matrix":[0,2]}, {"x":3, "y":0, "matrix":[0,3]}, {"x":4, "y":0, "matrix":[0,4]}, {"x":5, "y":0, "matrix":[0,5]},
-        {"x":0, "y":1, "matrix":[1,0]}, {"x":1, "y":1, "matrix":[1,1]}, {"x":2, "y":1, "matrix":[1,2]}, {"x":3, "y":1, "matrix":[1,3]}, {"x":4, "y":1, "matrix":[1,4]}, {"x":5, "y":1, "matrix":[1,5]},
-        {"x":0, "y":2, "matrix":[2,0]}, {"x":1, "y":2, "matrix":[2,1]}, {"x":2, "y":2, "matrix":[2,2]}, {"x":3, "y":2, "matrix":[2,3]}, {"x":4, "y":2, "matrix":[2,4]}, {"x":5, "y":2, "matrix":[2,5]},
-        {"x":0, "y":3, "matrix":[3,0]}, {"x":1, "y":3, "matrix":[3,1]}, {"x":2, "y":3, "matrix":[3,2]}, {"x":3, "y":3, "matrix":[3,3]}, {"x":4, "y":3, "matrix":[3,4]}, {"x":5, "y":3, "matrix":[3,5]},
-        {"x":7, "y":0, "matrix":[4,0]}, {"x":8, "y":0, "matrix":[4,1]}, {"x":9, "y":0, "matrix":[4,2]}, {"x":10, "y":0, "matrix":[4,3]}, {"x":11, "y":0, "matrix":[4,4]}, {"x":12, "y":0, "matrix":[4,5]},
-        {"x":7, "y":1, "matrix":[5,0]}, {"x":8, "y":1, "matrix":[5,1]}, {"x":9, "y":1, "matrix":[5,2]}, {"x":10, "y":1, "matrix":[5,3]}, {"x":11, "y":1, "matrix":[5,4]}, {"x":12, "y":1, "matrix":[5,5]},
-        {"x":7, "y":2, "matrix":[6,0]}, {"x":8, "y":2, "matrix":[6,1]}, {"x":9, "y":2, "matrix":[6,2]}, {"x":10, "y":2, "matrix":[6,3]}, {"x":11, "y":2, "matrix":[6,4]}, {"x":12, "y":2, "matrix":[6,5]},
-        {"x":7, "y":3, "matrix":[7,0]}, {"x":8, "y":3, "matrix":[7,1]}, {"x":9, "y":3, "matrix":[7,2]}, {"x":10, "y":3, "matrix":[7,3]}, {"x":11, "y":3, "matrix":[7,4]}, {"x":12, "y":3, "matrix":[7,5]},
-        {"x":2, "y":4, "matrix":[8,0]}, {"x":3, "y":4, "matrix":[8,1]}, {"x":4, "y":4, "matrix":[8,2]}, {"x":5, "y":4, "matrix":[8,3]}, {"x":6, "y":4, "matrix":[8,4]},
-        {"x":8, "y":4, "matrix":[9,0]}, {"x":9, "y":4, "matrix":[9,1]}, {"x":10, "y":4, "matrix":[9,2]}
-      ]
-    }
-  }
-}
+#include QMK_KEYBOARD_H
+
+enum layers { _BASE, _FUNC, _SYS };
+
+#define FUNC MO(_FUNC)
+#define SYS  MO(_SYS)
+
+const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
+[_BASE] = LAYOUT(
+  KC_ESC,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_BSPC,
+  KC_TAB,  KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT,
+  KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_RSFT,
+  KC_LCTL, KC_LGUI, KC_LALT, FUNC,    KC_SPC,  KC_ENT,  SYS,     KC_ENT,  KC_SPC,  KC_RALT, KC_RGUI, KC_RCTL,
+  KC_LCTL, KC_LALT, KC_SPC,  KC_ENT,  KC_DEL,           KC_SPC,  KC_ENT,  KC_BSPC
+),
+[_FUNC] = LAYOUT(
+  KC_GRV,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_DEL,
+  _______, _______, _______, _______, _______, _______, KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, _______, _______,
+  _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
+  _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
+  _______, _______, _______, _______, _______,           _______, _______, _______
+),
+[_SYS] = LAYOUT(
+  QK_BOOT, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
+  _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
+  _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
+  _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
+  _______, _______, _______, _______, _______,           _______, _______, _______
+)
+};
