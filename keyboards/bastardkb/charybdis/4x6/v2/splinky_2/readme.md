@@ -5,7 +5,7 @@
 ## Особенности
 - Полная поддержка Vial с динамическими слоями
 - Трекбол PMW3360 на правой половине (MASTER_RIGHT)
-- Split-соединение через UART (GP1)
+- Split-соединение через UART (GP0/GP1)
 - Эмуляция EEPROM через RP2040 Flash Wear Leveling
 - Double-tap reset для входа в bootloader
 
