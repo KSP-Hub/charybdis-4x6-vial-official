@@ -23,7 +23,7 @@ jobs:
       - name: Build firmware
         run: |
           git config --global --add safe.directory $(pwd)
-          make bastardkb/charybdis/4x6/v2/splinky_2:vial
+          make bastardkb/charybdis/4x6/v2/splinky_2:vial BOOTLOADER=rp2040
 
       - name: Upload firmware artifacts
         uses: actions/upload-artifact@v4
