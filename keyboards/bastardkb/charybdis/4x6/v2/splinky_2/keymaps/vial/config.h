@@ -8,6 +8,7 @@
 // Split & Pointing Device
 #define MASTER_RIGHT
 #define POINTING_DEVICE_RIGHT
+#define POINTING_DEVICE_ROTATION_90
 
 // PMW3360 Trackball (КРИТИЧНО ДЛЯ СБОРКИ)
 #define PMW3360_CS_PIN GP14
