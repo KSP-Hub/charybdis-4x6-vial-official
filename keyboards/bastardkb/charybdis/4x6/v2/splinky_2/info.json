@@ -1,18 +1,18 @@
 {
   "keyboard_name": "Charybdis 4x6 v2 (Splinky 2)",
-  "manufacturer": "Bastard Keyboards",
-  "url": "https://bastardkb.com",
-  "maintainer": "KSP-Hub",
+  "processor": "RP2040",
+  "bootloader": "custom",
   "diode_direction": "COL2ROW",
+  "matrix_size": {
+    "rows": 10,
+    "cols": 7
+  },
   "split": {
     "enabled": true,
-    "transport": "serial"
-  },
-  "features": {
-    "bootmagic": true,
-    "mousekey": true,
-    "extrakey": true,
-    "pointing_device": true
+    "transport": {
+      "protocol": "serial"
+    },
+    "soft_serial_pin": "GP1"
   },
   "layouts": {
     "LAYOUT": {
