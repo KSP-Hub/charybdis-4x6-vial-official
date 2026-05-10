@@ -1,5 +1,5 @@
 name: Build 4x6 Vial Clean
-on: [pull_request, push, workflow_dispatch]
+on: [workflow_dispatch]
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
@@ -23,7 +23,7 @@ jobs:
       - name: Build firmware
         run: |
           git config --global --add safe.directory $(pwd)
-          qmk compile -kb bastardkb/charybdis/4x6/v2/splinky_2 -km vial
+          make bastardkb/charybdis/4x6/v2/splinky_2:vial
 
       - name: Upload firmware artifacts
         uses: actions/upload-artifact@v4
