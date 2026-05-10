@@ -2,7 +2,6 @@
   "keyboard_name": "Charybdis 4x6 v2 (Splinky 2)",
   "manufacturer": "Bastard Keyboards",
   "maintainer": "KSP-Hub",
-  "bootloader": "custom",
   "diode_direction": "COL2ROW",
   "split": {
     "enabled": true,
