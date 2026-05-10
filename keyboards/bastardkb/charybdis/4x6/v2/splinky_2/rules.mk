@@ -5,7 +5,8 @@ VIAL_INSECURE = yes
 QMK_SETTINGS = no
 
 # Hardware & Drivers
-BOOTLOADER = custom
+MCU = RP2040
+BOOTLOADER = rp2040
 SERIAL_DRIVER = vendor
 EEPROM_DRIVER = vendor
 SPLIT_KEYBOARD = yes
