@@ -16,12 +16,10 @@ jobs:
           persist-credentials: false
           submodules: recursive
 
-      - name: Install Python dependencies
-        run: python3 -m pip install appdirs platformdirs
-
       - name: Build firmware
         run: |
           git config --global --add safe.directory $(pwd)
+          python3 -m pip install -r requirements.txt
           qmk compile -kb bastardkb/charybdis/4x6/v2/splinky_2 -km vial
 
       - name: Upload firmware artifacts
