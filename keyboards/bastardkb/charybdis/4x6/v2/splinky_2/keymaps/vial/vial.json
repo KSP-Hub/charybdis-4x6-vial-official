@@ -1,7 +1,7 @@
 {
   "keyboard_name": "Charybdis 4x6 v2 (Splinky 2)",
-  "manufacturer": "Bastard Keyboards",
-  "maintainer": "KSP-Hub",
+  "processor": "cortex-m0plus",
+  "bootloader": "rp2040",
   "diode_direction": "COL2ROW",
   "matrix_size": {
     "rows": 10,
