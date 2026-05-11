@@ -21,7 +21,7 @@ jobs:
           submodules: recursive
 
       - name: Install missing Python dependencies
-        run: /opt/uv/tools/qmk/bin/python3 -m pip install pyserial pillow
+        run: uv pip install pyserial pillow
 
       - name: Build firmware
         run: |
