@@ -1,17 +1,13 @@
 name: Build 4x6 Vial Clean
 on: [workflow_dispatch]
-
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
-
 permissions: {}
-
 jobs:
   build-vial:
     name: Build Charybdis 4x6 Vial
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -22,12 +18,11 @@ jobs:
       - name: Setup Python, QMK CLI & Compile
         run: |
           set -e
-
           # 1. System toolchain
           sudo apt-get update -qq
           sudo apt-get install -y gcc-arm-none-eabi binutils-arm-none-eabi dfu-util avrdude avr-libc gcc-avr
 
-          # 2. Create & activate virtual environment (обходит PEP 668 и проблемы с путями)
+          # 2. Create & activate virtual environment
           python3 -m venv .venv
           source .venv/bin/activate
 
@@ -35,11 +30,14 @@ jobs:
           pip install --upgrade pip
           pip install qmk pyserial pillow
 
-          # 4. Verify CLI
+          # 4. Skip QMK's internal dependency check (known false-negative in CI/venv)
+          export QMK_SKIP_DEPENDENCY_CHECK=1
+
+          # 5. Verify CLI
           which qmk
           qmk --version
 
-          # 5. Compile firmware
+          # 6. Compile firmware
           git config --global --add safe.directory $(pwd)
           qmk compile -kb bastardkb/charybdis/4x6/v2/splinky_2 -km vial
 
