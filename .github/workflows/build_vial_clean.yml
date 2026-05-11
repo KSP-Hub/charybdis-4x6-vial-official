@@ -24,14 +24,20 @@ jobs:
         with:
           python-version: '3.12'
 
-      - name: Install QMK CLI & Toolchain
+      - name: Install QMK CLI & Dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install qmk
+          pip install qmk pyserial pillow
           qmk setup --yes
+          pip install -r requirements.txt
+          # Verify imports are visible to the current Python environment
+          python -c "import pyserial, PIL; print('✅ Dependencies verified')"
 
-      - name: Build Firmware
-        run: make bastardkb/charybdis/4x6/v2/splinky_2:vial
+      - name: Build Vial Firmware
+        run: qmk compile -kb bastardkb/charybdis/4x6/v2/splinky_2 -km vial
+        env:
+          # Force QMK CLI to see packages installed by GitHub Actions Python
+          PYTHONPATH: ${{ env.pythonLocation }}/lib/python3.12/site-packages:${{ env.PYTHONPATH }}
 
       - name: Upload firmware artifacts
         uses: actions/upload-artifact@v4
