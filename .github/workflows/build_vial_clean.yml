@@ -24,15 +24,16 @@ jobs:
         with:
           python-version: '3.12'
 
-      - name: Install QMK CLI & Dependencies
+      - name: Install Toolchain & Dependencies
         run: |
+          sudo apt-get update
+          sudo apt-get install -y gcc-arm-none-eabi binutils-arm-none-eabi dfu-util avrdude avr-libc gcc-avr
           python -m pip install --upgrade pip
           pip install qmk pyserial pillow
+          pip install -r requirements.txt
 
-      - name: Build Vial Firmware
-        run: qmk compile -kb bastardkb/charybdis/4x6/v2/splinky_2 -km vial
-        env:
-          QMK_SKIP_DEPENDENCY_CHECK: "1"
+      - name: Build Firmware (via make)
+        run: make bastardkb/charybdis/4x6/v2/splinky_2:vial
 
       - name: Upload firmware artifacts
         uses: actions/upload-artifact@v4
