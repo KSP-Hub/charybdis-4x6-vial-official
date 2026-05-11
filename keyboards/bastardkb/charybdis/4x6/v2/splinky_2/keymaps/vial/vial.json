@@ -2,17 +2,7 @@
   "name": "Charybdis 4x6 Vial",
   "vendorId": "0xA8F8",
   "productId": "0x1832",
-  "customKeycodes": [
-    {"name": "DPI+", "title": "Increase pointer DPI", "shortName": "DPI_MOD"},
-    {"name": "DPI-", "title": "Decrease pointer DPI", "shortName": "DPI_RMOD"},
-    {"name": "Snp DPI+", "title": "Increase sniping DPI", "shortName": "S_D_MOD"},
-    {"name": "Snp DPI-", "title": "Decrease sniping DPI", "shortName": "S_D_RMOD"},
-    {"name": "Sniping", "title": "Sniping mode (hold)", "shortName": "SNIPING"},
-    {"name": "Snp Tog", "title": "Sniping mode (toggle)", "shortName": "SNP_TOG"},
-    {"name": "Scroll", "title": "Drag scroll (hold)", "shortName": "DRGSCRL"},
-    {"name": "Scrl Tog", "title": "Drag scroll (toggle)", "shortName": "DRG_TOG"}
-  ],
-  "matrix": {"rows": 10, "cols": 6},
+  "matrix": {"rows": 10, "cols": 7},
   "layouts": {
     "keymap": [
       [{"x":0,"y":0},"0,0","0,1","0,2","0,3","0,4","0,5",{"x":1},"5,0","5,1","5,2","5,3","5,4","5,5"],
