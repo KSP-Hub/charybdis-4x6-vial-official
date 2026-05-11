@@ -20,8 +20,11 @@ jobs:
           persist-credentials: false
           submodules: recursive
 
-      - name: Initialize QMK CLI environment
-        run: qmk setup --yes
+      - name: Initialize QMK CLI & Install Dependencies
+        run: |
+          qmk setup --yes
+          QMK_PYTHON=$(dirname $(which qmk))/python3
+          $QMK_PYTHON -m pip install pyserial pillow
 
       - name: Build firmware
         run: qmk compile -kb bastardkb/charybdis/4x6/v2/splinky_2 -km vial
