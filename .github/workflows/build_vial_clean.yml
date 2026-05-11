@@ -19,28 +19,29 @@ jobs:
           persist-credentials: false
           submodules: recursive
 
-      - name: Setup Environment & Compile (Single Context)
+      - name: Setup Python, QMK CLI & Compile
         run: |
           set -e
+
           # 1. System toolchain
-          sudo apt-get update
+          sudo apt-get update -qq
           sudo apt-get install -y gcc-arm-none-eabi binutils-arm-none-eabi dfu-util avrdude avr-libc gcc-avr
 
-          # 2. QMK CLI & Python deps (user-space to avoid PEP 668 blocks)
-          python3 -m pip install --user --break-system-packages qmk pyserial pillow
+          # 2. Create & activate virtual environment (обходит PEP 668 и проблемы с путями)
+          python3 -m venv .venv
+          source .venv/bin/activate
 
-          # 3. Force PATH visibility for this shell session
-          export PATH="$HOME/.local/bin:$PATH"
+          # 3. Install QMK CLI & dependencies
+          pip install --upgrade pip
+          pip install qmk pyserial pillow
 
-          # 4. Verify CLI is reachable before make
+          # 4. Verify CLI
           which qmk
           qmk --version
 
-          # 5. Initialize ~/.qmk to satisfy Makefile pre-flight
-          qmk setup --yes
-
-          # 6. Compile firmware
-          make bastardkb/charybdis/4x6/v2/splinky_2:vial
+          # 5. Compile firmware
+          git config --global --add safe.directory $(pwd)
+          qmk compile -kb bastardkb/charybdis/4x6/v2/splinky_2 -km vial
 
       - name: Upload firmware artifacts
         uses: actions/upload-artifact@v4
