@@ -20,15 +20,14 @@ jobs:
           persist-credentials: false
           submodules: recursive
 
-      - name: Setup QMK CLI & Build Firmware
+      - name: Setup QMK CLI & Install Dependencies
         run: |
           git config --global --add safe.directory $(pwd)
           qmk setup --yes
-          /opt/uv/tools/qmk/bin/python3 -m pip install pyserial pillow
-          export PYTHONPATH="/opt/uv/tools/qmk/lib/python3.14/site-packages:$PYTHONPATH"
-          qmk compile -kb bastardkb/charybdis/4x6/v2/splinky_2 -km vial
-        env:
-          UV_NO_ISOLATION: "1"
+          uv pip install pyserial pillow
+
+      - name: Build firmware
+        run: qmk compile -kb bastardkb/charybdis/4x6/v2/splinky_2 -km vial
 
       - name: Upload firmware artifacts
         uses: actions/upload-artifact@v4
