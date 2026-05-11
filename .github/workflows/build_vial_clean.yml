@@ -20,6 +20,9 @@ jobs:
           persist-credentials: false
           submodules: recursive
 
+      - name: Install missing Python dependencies
+        run: python3 -m pip install pyserial pillow
+
       - name: Build firmware
         run: |
           git config --global --add safe.directory $(pwd)
