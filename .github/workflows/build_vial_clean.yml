@@ -19,14 +19,18 @@ jobs:
           persist-credentials: false
           submodules: recursive
 
-      - name: Install ARM Toolchain & Build Dependencies
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y gcc-arm-none-eabi binutils-arm-none-eabi dfu-util avrdude avr-libc gcc-avr
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
 
-      - name: Build firmware via Make
+      - name: Install QMK CLI
         run: |
-          make bastardkb/charybdis/4x6/v2/splinky_2:vial
+          python -m pip install --upgrade pip
+          pip install qmk
+
+      - name: Build Vial Firmware
+        run: qmk compile -kb bastardkb/charybdis/4x6/v2/splinky_2 -km vial
 
       - name: Upload firmware artifacts
         uses: actions/upload-artifact@v4
