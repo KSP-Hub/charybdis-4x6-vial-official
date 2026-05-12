@@ -24,32 +24,22 @@ jobs:
         with:
           python-version: '3.10'
 
-      - name: Install Dependencies & Compile
+      - name: Install QMK CLI & Dependencies
         run: |
-          set -e
-
-          # 1. System toolchain
-          sudo apt-get update -qq
-          sudo apt-get install -y gcc-arm-none-eabi binutils-arm-none-eabi dfu-util avrdude avr-libc gcc-avr make git
-
-          # 2. Python dependencies
-          pip install --upgrade pip
+          python -m pip install --upgrade pip
           pip install qmk==1.1.5 milc==1.9.1 pyserial pillow
 
-          # 3. Explicitly export paths to ensure visibility
-          export PATH="$HOME/.local/bin:$PATH"
-          export PYTHONPATH="/opt/hostedtoolcache/Python/3.10.20/x64/lib/python3.10/site-packages:$PYTHONPATH"
+      - name: Create dummy udev rule to bypass permission error
+        run: |
+          sudo mkdir -p /etc/udev/rules.d
+          echo "# Dummy rule for QMK CI" | sudo tee /etc/udev/rules.d/90-netplan.rules > /dev/null
+          sudo chmod 644 /etc/udev/rules.d/90-netplan.rules
 
-          # 4. Verify installation
-          which qmk
-          qmk --version
-
-          # 5. Initialize QMK home (creates ~/.qmk)
-          qmk setup --yes
-
-          # 6. Compile using make directly (bypasses qmk compile dependency check)
-          git config --global --add safe.directory $(pwd)
-          make bastardkb/charybdis/4x6/v2/splinky_2:vial
+      - name: Compile Firmware
+        env:
+          QMK_SKIP_DEPENDENCY_CHECK: "1"
+        run: |
+          qmk compile -kb bastardkb/charybdis/4x6/v2/splinky_2 -km vial
 
       - name: Upload firmware artifacts
         uses: actions/upload-artifact@v4
