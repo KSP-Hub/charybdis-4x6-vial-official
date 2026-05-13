@@ -200,7 +200,7 @@ safe_command = args and args[0] in safe_commands
 
 if not safe_command:
     if _broken_module_imports('requirements.txt'):
-        if yesno('Would you like to install the required Python modules?'):
+        if False:
             _install_deps('requirements.txt')
         else:
             print()
@@ -209,7 +209,7 @@ if not safe_command:
             exit(1)
 
     if cli.config.user.developer and _broken_module_imports('requirements-dev.txt'):
-        if yesno('Would you like to install the required developer Python modules?'):
+        if False:
             _install_deps('requirements-dev.txt')
         elif yesno('Would you like to disable developer mode?'):
             _run_cmd(sys.argv[0], 'config', 'user.developer=None')
