@@ -5,9 +5,7 @@
   "diode_direction": "COL2ROW",
   "split": {
     "enabled": true,
-    "transport": {
-      "protocol": "serial"
-    }
+    "transport": {"protocol": "serial"}
   },
   "features": {
     "bootmagic": true,
