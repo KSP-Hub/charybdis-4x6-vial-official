@@ -92,3 +92,12 @@ user_song_list.h
 compile_commands.json
 .clangd/
 .cache/
+
+# Local build & Python env artifacts
+.build/
+.qmk_venv/
+__pycache__/
+*.uf2
+*.hex
+*.bin
+*.pyc

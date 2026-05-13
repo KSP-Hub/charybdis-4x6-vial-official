@@ -471,5 +471,5 @@
     },
     "protocol": "ChibiOS",
     "platform": "chibios",
-    "processor": "RP2040"
+    "processor": "cortex-m0plus"
 }
