@@ -2,16 +2,22 @@
   "keyboard_name": "Charybdis 4x6 v2 (Splinky 2)",
   "manufacturer": "Bastard Keyboards",
   "maintainer": "KSP-Hub",
+  "processor": "RP2040",
+  "bootloader": "rp2040",
+  "platform": "chibios",
+  "protocol": "ChibiOS",
   "diode_direction": "COL2ROW",
   "split": {
     "enabled": true,
+    "soft_serial_pin": "GP1",
     "transport": {"protocol": "serial"}
   },
   "features": {
     "bootmagic": true,
     "mousekey": true,
     "extrakey": true,
-    "pointing_device": true
+    "pointing_device": true,
+    "via": true
   },
   "layouts": {
     "LAYOUT": {
@@ -28,8 +34,5 @@
         {"x":8,"y":4,"matrix":[9,0]},{"x":9,"y":4,"matrix":[9,1]},{"x":10,"y":4,"matrix":[9,2]}
       ]
     }
-  },
-  "protocol": "ChibiOS",
-  "platform": "chibios",
-  "processor": "cortex-m0plus"
+  }
 }
