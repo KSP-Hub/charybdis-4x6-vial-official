@@ -92,3 +92,36 @@ user_song_list.h
 compile_commands.json
 .clangd/
 .cache/
+# Build artifacts
+.build/
+*.uf2
+*.hex
+*.bin
+*.elf
+*.map
+*.tmp
+*.o
+*.a
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+venv/
+.venv/
+*.egg-info/
+*.egg
+
+# Local config backups
+*.bak
+*.swp
+*.swo
+*~
+
+# IDE
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
